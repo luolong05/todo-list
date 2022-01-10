@@ -39,5 +39,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/styled-components": "^5.1.19",
+    "babel-plugin-styled-components": "^2.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0"
   }
 }

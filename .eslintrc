@@ -1,0 +1,29 @@
+{
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier"
+  ],
+  "globals": {},
+  "rules": {
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-empty-function": 0
+  }
+}

@@ -9,6 +9,7 @@ export default {
   colorDisabled: "#ddd",
   textDefaultColor: '#252323',
   textDefaultFontSize: '14px',
+  textLgFontSize: '18px',
   backgroundDefaultColor: '#fff',
   backgroundDefaultColorActive: '#e8e8e8',
   bgPrimaryActiveFontColor: '#fff',

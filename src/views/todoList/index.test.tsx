@@ -19,14 +19,21 @@ describe('Test the elements of the todo-list component', () => {
 });
 
 describe('Test the function of the todo-list component', () => {
+  const todoItemLabel = 'test-todo-item';
+  const noDataTips = '暂无数据';
+
+  let newTodoItem: HTMLElement;
+
   it('Test add and delete and update todo item function', () => {
-    const todoItemLabel = 'test-todo-item';
     const inputEl = todoInstance.getByRole('textbox') as HTMLInputElement;
     const buttonEl = todoInstance.getByRole('button');
 
     expect(buttonEl).toBeDisabled();
 
-    // add
+    // show no data tips
+    const noDataEl = todoInstance.getByText(noDataTips);
+    expect(noDataEl).toBeInTheDocument();
+
     userEvent.type(inputEl, todoItemLabel);
 
     expect(buttonEl).toBeEnabled();
@@ -36,11 +43,14 @@ describe('Test the function of the todo-list component', () => {
     expect(buttonEl).toBeDisabled();
     expect(inputEl.value).toEqual('');
 
-    const newTodoItem = todoInstance.getByText(todoItemLabel);
+    newTodoItem = todoInstance.getByText(todoItemLabel);
     expect(newTodoItem).toBeInTheDocument();
     expect(newTodoItem.parentElement?.tagName.toLocaleLowerCase()).toEqual('li');
 
-    // update
+    expect(noDataEl).not.toBeInTheDocument();
+  });
+
+  it('Test update todo item function', () => {
     const checkboxEl = newTodoItem.parentElement?.querySelector('input');
     expect(checkboxEl).toBeInTheDocument();
 
@@ -51,14 +61,17 @@ describe('Test the function of the todo-list component', () => {
         color: 'rgb(48 197 87)'
       });
     }
+  });
 
-    // delete
+  it('Test delete todo item function', () => {
     const deleteBtn = newTodoItem.nextElementSibling;
     expect(deleteBtn).toHaveTextContent('x');
 
     if (deleteBtn) {
       userEvent.click(deleteBtn);
       expect(newTodoItem).not.toBeInTheDocument();
+
+      expect(todoInstance.getByText(noDataTips)).toBeInTheDocument();
     }
   });
 });

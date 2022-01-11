@@ -53,5 +53,10 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0"
   },
-  "config-overrides-path": "webpack/webpack.overrides.config.js"
+  "config-overrides-path": "webpack/webpack.overrides.config.js",
+  "jest": {
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  }
 }

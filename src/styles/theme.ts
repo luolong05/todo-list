@@ -1,10 +1,10 @@
 export default {
-  colorDefault: "#d9d9d9",
+  colorDefault: "#505050",
   colorDefaultActive: "#fff",
   colorPrimary: "#246ab9",
   colorPrimaryActive: "#3284e1",
   colorWarning: "#FF9A2A",
-  colorSuccess: "#7FBC39",
+  colorSuccess: "#30c557",
   colorError: "#F56C6C",
   colorDisabled: "#ddd",
   textDefaultColor: '#252323',

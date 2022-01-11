@@ -35,14 +35,10 @@ const TodoManager: React.FC = () => {
   return (
     <Styled.PageWrap>
       <Styled.PageHeader>
-        <TodoAddForm onAddTodo={handleAddTodo}></TodoAddForm>
+        <TodoAddForm onAddTodo={handleAddTodo} />
       </Styled.PageHeader>
       <Styled.PageContent>
-        <TodoList
-          todoList={todoList}
-          onUpdate={handleTodoUpdate}
-          onDelete={handleTodoDelete}
-        ></TodoList>
+        <TodoList todoList={todoList} onUpdate={handleTodoUpdate} onDelete={handleTodoDelete} />
       </Styled.PageContent>
     </Styled.PageWrap>
   );
@@ -77,7 +73,7 @@ const TodoAddForm: React.FC<TodoAddFormProps> = ({ onAddTodo }) => {
   return (
     <Styled.TodoForm onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleCommit(e)}>
       <Styled.FormInputWrap>
-        <Input value={newItemName} onChange={handleInputValueChange}></Input>
+        <Input value={newItemName} onChange={handleInputValueChange} />
       </Styled.FormInputWrap>
       <Button htmlType="submit" disabled={disableButton}>
         Add Todo

@@ -1,8 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import resetStyle from "./reset";
-import baseStyle from "./base";
+import { createGlobalStyle } from 'styled-components';
+import resetStyle from './reset';
 
 export default createGlobalStyle`
   ${resetStyle}
-  ${baseStyle}
 `;

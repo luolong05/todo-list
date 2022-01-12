@@ -19,10 +19,6 @@ export const FormInputWrap = styled.div`
   flex: 1;
 `;
 
-export const PageContent = styled.article``;
-
-export const TodoList = styled.ul``;
-
 export const TodoItem = styled.li`
   display: flex;
   align-items: center;

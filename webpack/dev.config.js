@@ -3,17 +3,14 @@ const devServerConfig = (config) => {
     ...config,
     compress: true,
     proxy: {
-      "/api": {
-        target: "http://localhost:8088/api",
-        changeOrigin: true,
-        pathRewrite: {
-          "^/api": "",
-        },
-      },
-    },
+      '/todo': {
+        target: 'http://localhost:8080',
+        changeOrigin: true
+      }
+    }
   };
 };
 
 module.exports = {
-  devServerConfig,
+  devServerConfig
 };

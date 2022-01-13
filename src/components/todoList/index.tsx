@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Styled from './index.styled';
 import { TodoType } from './todoTypes';
 import TodoAddForm from './todoAddForm';
 import TodoList from './todoList';
+import { apiTodoList } from '@/api/todo';
 
 const TodoManager: React.FC = () => {
   const [todoList, setTodoList] = useState<TodoType[]>([]);
+
+  useEffect(() => {
+    getTodoList();
+  }, []);
+
+  const getTodoList = async (): Promise<void> => {
+    const [err, res] = await apiTodoList();
+    if (!err) {
+      const todoList = (res?.data || []) as TodoType[];
+      setTodoList(todoList);
+    }
+  };
 
   const handleAddTodo = (todo: TodoType): void => {
     setTodoList([...todoList, todo]);

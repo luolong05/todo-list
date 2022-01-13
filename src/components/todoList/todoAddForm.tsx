@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TodoStatus, TodoType } from '@/views/todoList/todoTypes';
-import * as Styled from '@/views/todoList/index.styled';
+import { TodoStatus, TodoType } from '@/components/todoList/todoTypes';
+import * as Styled from '@/components/todoList/index.styled';
 import { Button, Input } from '@/base';
+import { apiTodoAdd } from '@/api/todo';
 
 interface TodoAddFormProps {
   onAddTodo: (todo: TodoType) => void;
@@ -14,16 +15,21 @@ const TodoAddForm: React.FC<TodoAddFormProps> = ({ onAddTodo }) => {
     setNewItemName(event.target.value);
   };
 
-  const handleCommit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleCommit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
 
-    onAddTodo({
+    const newTodo: TodoType = {
       id: Math.floor(Math.random() * 100000),
       label: newItemName,
       statue: TodoStatus.DOING
-    });
+    };
 
-    setNewItemName('');
+    const [err, resData] = await apiTodoAdd(newTodo);
+    if (!err) {
+      onAddTodo(resData?.data as TodoType);
+
+      setNewItemName('');
+    }
   };
 
   return (

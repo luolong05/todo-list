@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@/styles/index';
 import GlobalTheme from '@/styles/theme';
-import TodoManager from '@/views/todoList';
+import TodoManager from '@/components/todoList';
 
 ReactDOM.render(
   <ThemeProvider theme={GlobalTheme}>

@@ -1,7 +1,8 @@
 import React from 'react';
-import { TodoStatus, TodoType } from '@/views/todoList/todoTypes';
-import * as Styled from '@/views/todoList/index.styled';
+import { TodoStatus, TodoType } from '@/components/todoList/todoTypes';
+import * as Styled from '@/components/todoList/index.styled';
 import { Input } from '@/base';
+import { apiTodoUpdate, apiTodoDelete } from '@/api/todo';
 
 interface TodoListProps {
   todoList: TodoType[];
@@ -10,15 +11,23 @@ interface TodoListProps {
 }
 
 const TodoList: React.FC<TodoListProps> = ({ todoList, onUpdate, onDelete }) => {
-  const handleToggleTodoStatus = (todo: TodoType): void => {
-    onUpdate({
+  const handleToggleTodoStatus = async (todo: TodoType): Promise<void> => {
+    const newTodo: TodoType = {
       ...todo,
       statue: todo.statue === TodoStatus.DOING ? TodoStatus.DONE : TodoStatus.DOING
-    });
+    };
+
+    const [err, resData] = await apiTodoUpdate(todo.id, newTodo);
+    if (!err) {
+      onUpdate(resData?.data as TodoType);
+    }
   };
 
-  const handleTodoDelete = (todo: TodoType): void => {
-    onDelete(todo);
+  const handleTodoDelete = async (todo: TodoType): Promise<void> => {
+    const [err] = await apiTodoDelete(todo.id);
+    if (!err) {
+      onDelete(todo);
+    }
   };
 
   const todoListIsEmpty = todoList.length === 0;
@@ -31,7 +40,11 @@ const TodoList: React.FC<TodoListProps> = ({ todoList, onUpdate, onDelete }) => 
       {todoList.map((todo) => (
         <Styled.TodoItem key={todo.id}>
           <Styled.TodoItemInputWrap>
-            <Input htmlType="checkbox" onChange={() => handleToggleTodoStatus(todo)} />
+            <Input
+              htmlType="checkbox"
+              checked={todo.statue === TodoStatus.DONE}
+              onChange={() => handleToggleTodoStatus(todo)}
+            />
           </Styled.TodoItemInputWrap>
           <Styled.TodoItemLabel done={todo.statue === TodoStatus.DONE}>
             {todo.label}

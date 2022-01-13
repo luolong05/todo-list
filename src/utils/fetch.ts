@@ -9,10 +9,9 @@ export type ResponseData = {
   data?: object;
 };
 
-const request = (
-  input: RequestInfo,
-  options: RequestInit = {}
-): Promise<[Error | null, ResponseData?]> => {
+export type ResponseType = [Error | null, ResponseData?];
+
+const request = (input: RequestInfo, options: RequestInit = {}): Promise<ResponseType> => {
   if (!options.headers) {
     options.headers = { 'Content-Type': 'application/json' };
   }

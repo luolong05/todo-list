@@ -6,5 +6,5 @@ export enum TodoStatus {
 export interface TodoType {
   id: number;
   label: string;
-  statue: TodoStatus;
+  status: TodoStatus;
 }

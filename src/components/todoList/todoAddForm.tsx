@@ -21,7 +21,7 @@ const TodoAddForm: React.FC<TodoAddFormProps> = ({ onAddTodo }) => {
     const newTodo: TodoType = {
       id: Math.floor(Math.random() * 100000),
       label: newItemName,
-      statue: TodoStatus.DOING
+      status: TodoStatus.DOING
     };
 
     const [err, resData] = await apiTodoAdd(newTodo);

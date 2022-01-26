@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyledButton } from './index.styled';
 
+type ButtonHtmlType = 'button' | 'submit' | 'reset' | undefined;
 interface ButtonProps {
-  htmlType?: 'button' | 'submit' | 'reset' | undefined;
+  htmlType?: ButtonHtmlType;
   disabled?: boolean | undefined;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

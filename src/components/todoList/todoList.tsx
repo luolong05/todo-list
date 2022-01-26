@@ -14,7 +14,7 @@ const TodoList: React.FC<TodoListProps> = ({ todoList, onUpdate, onDelete }) => 
   const handleToggleTodoStatus = async (todo: TodoType): Promise<void> => {
     const newTodo: TodoType = {
       ...todo,
-      statue: todo.statue === TodoStatus.DOING ? TodoStatus.DONE : TodoStatus.DOING
+      status: todo.status === TodoStatus.DOING ? TodoStatus.DONE : TodoStatus.DOING
     };
 
     const [err, resData] = await apiTodoUpdate(todo.id, newTodo);
@@ -42,11 +42,11 @@ const TodoList: React.FC<TodoListProps> = ({ todoList, onUpdate, onDelete }) => 
           <Styled.TodoItemInputWrap>
             <Input
               htmlType="checkbox"
-              checked={todo.statue === TodoStatus.DONE}
+              checked={todo.status === TodoStatus.DONE}
               onChange={() => handleToggleTodoStatus(todo)}
             />
           </Styled.TodoItemInputWrap>
-          <Styled.TodoItemLabel done={todo.statue === TodoStatus.DONE}>
+          <Styled.TodoItemLabel done={todo.status === TodoStatus.DONE}>
             {todo.label}
           </Styled.TodoItemLabel>
           <Styled.TodoItemDelete onClick={() => handleTodoDelete(todo)}>x</Styled.TodoItemDelete>

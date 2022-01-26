@@ -25,6 +25,7 @@ const TodoAddForm: React.FC<TodoAddFormProps> = ({ onAddTodo }) => {
     };
 
     const [err, resData] = await apiTodoAdd(newTodo);
+    console.log('🚀 ~ file: todoAddForm.tsx ~ line 28 ~ handleCommit ~ resData', resData);
     if (!err) {
       onAddTodo(resData?.data as TodoType);
 

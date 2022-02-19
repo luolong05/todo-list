@@ -5,6 +5,7 @@ import GlobalStyle from '@/styles/index';
 import GlobalTheme from '@/styles/theme';
 import TodoManager from '@/components/todoList';
 
+// commit 2
 ReactDOM.render(
   <ThemeProvider theme={GlobalTheme}>
     <GlobalStyle />
